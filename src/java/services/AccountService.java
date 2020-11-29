@@ -15,7 +15,7 @@ public class AccountService {
         try {
             User user = userDB.get(email);
             if (password.equals(user.getPassword())) {
-                Logger.getLogger(AccountService.class.getName()).log(Level.INFO, "Successful login by {0}", email);
+                Logger.getLogger(AccountService.class.getName()).log(Level.INFO, "Successfuㄱㄱ델  login by {0}", email);
                 
                 String to = user.getEmail();
                 String subject = "Notes App Login";

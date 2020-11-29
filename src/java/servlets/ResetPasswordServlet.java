@@ -32,6 +32,7 @@ public class ResetPasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
+        String password = request.getParameter("newpassword");
         String uuid = request.getParameter("uuid");
         
         AccountService as = new AccountService();
@@ -39,15 +40,13 @@ public class ResetPasswordServlet extends HttpServlet {
         String url = request.getRequestURL().toString(); // to get the current URL
         
         if (uuid != null) {
-            as.changePassword(uuid, path);          
-            getServletContext().getRequestDispatcher("/WEB-INF/resetNewPassword.jsp").forward(request, response);
+            as.changePassword(uuid, password);          
+            request.setAttribute("passwordChanged", true);
+            getServletContext().getRequestDispatcher("/WEB-INF/reset.jsp").forward(request, response);
         } else {
             as.resetPassword(email, path, url);
             request.setAttribute("emailSent", true);
             getServletContext().getRequestDispatcher("/WEB-INF/reset.jsp").forward(request, response);
         }
-       
-        
-        
     }
 }

@@ -47,6 +47,9 @@ public class AccountService {
             String uuid = UUID.randomUUID().toString();
             String link = url + "?uuid=" + uuid;
 
+            user.setResetPasswordUuid(uuid);
+            userDB.update(user);
+            
             HashMap<String, String> tags = new HashMap<>();
             tags.put("firstname", user.getFirstName());
             tags.put("lastname", user.getLastName());

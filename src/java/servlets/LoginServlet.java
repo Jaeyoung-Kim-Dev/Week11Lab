@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         
         Cookie[] cookies = request.getCookies();
         String email = CookieUtil.getCookieValue(cookies, "email");
-        request.setAttribute("email", email);
+        request.setAttribute("email", email); 
         
         getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
